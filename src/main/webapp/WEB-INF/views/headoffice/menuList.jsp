@@ -379,28 +379,31 @@ $(function() {
 							<div class="row" >
 								<div class="col">
 					    			<h5 class="card-title" align="center">기존이미지</h5>
-					    			<img class="card-img" id="upbeforemenuImage" width="120" height="200" >
+					    			<img class="card-img" src="${data.menuvo.menuImage}"id="upbeforemenuImage" width="120" height="200" >
 					   				</div>
 					   			
 					    		<div class="col">	 	 	
 					    			<h5 class="card-title" align="center">수정이미지</h5>
 					    			<div class="input-group mb-3" >
-					    			<input type="hidden" id="menuImage" name="menuImage">
+					    			<img class="card-img select_img">
+					    			<input type="hidden" id="menuImage" name="menuImage" value="${data.menuvo.menuImage}">
 									<input type="file" class="form-control" id="menuUploadfilef" name="menuUploadfilef">
 									  <span id="m_menuinput"></span><br>
 									</div>
+									
 									<script type="text/javascript">
 									$('#menuUploadfilef').change(function(){
 										if(this.files && this.files[0]) {
 											var reader = new FileReader;
 									 			reader.onload = function(e) {
-								 				$(".card-title").attr("src", e.target.result)
-								 					.width(100).height(100); 
+								 				$(".select_img").attr("src", e.target.result)
+								 					.width(200).height(200); 
 								 				} // onload_function
 								 				reader.readAsDataURL(this.files[0]);
 								 		} // if
 									}); // change	
 									</script>
+									
 								</div>
 							</div>
 						</div>			
