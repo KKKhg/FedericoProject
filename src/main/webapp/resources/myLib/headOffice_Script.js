@@ -1476,7 +1476,7 @@ function fcOrderFlagUpdate(flag) {
 			})//ajax
 		}//confirm
 	}//.click		
-
+/*
 	function preView(menuIndex){
 		
 		$.ajax({
@@ -1511,7 +1511,7 @@ function fcOrderFlagUpdate(flag) {
 			})//ajax
 		}// preView
 
-
+*/
 
 
 
