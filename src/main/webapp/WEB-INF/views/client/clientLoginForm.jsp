@@ -182,7 +182,7 @@ table, tr, td, th {
 																style="color: crimson;"></i> 
 																<i class="bi bi-check-circle-fill danger checkbox_yes"
 																style="color: crimson; display: none;"></i> <span
-																class="align-middle" style="font-size: medium;">개인정보
+																class="align-middle" style="font-size: small;">개인정보
 																수집/이용동의(필수)</span>
 														</div>
 														<div class="col-4" align="right">
