@@ -161,7 +161,7 @@ table, tr, td, th {
 
 
 
-	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+	<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 	<script>
 		function findAddr() {
 			var width = 500; //팝업의 너비
