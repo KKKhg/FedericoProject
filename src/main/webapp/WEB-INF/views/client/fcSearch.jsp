@@ -256,22 +256,27 @@ align-self: center;
 												        image : icon
 												    });
 													
-												    // 마커에 표시할 인포윈도우를 생성합니다 
-												    	infowindow = new kakao.maps.InfoWindow({
-											    		content: addrs[i].fcId // 인포윈도우에 표시할 내용
-												    });
-												    // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
-												    // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-												    (function(marker, infowindow) {
-												        // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
-												        kakao.maps.event.addListener(marker, 'mouseover', function() {
-												            infowindow.open(map, marker);
-												        });
-												        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
-												        kakao.maps.event.addListener(marker, 'mouseout', function() {
-												            infowindow.close();
-												        });
-												    })(marker, infowindow);
+												    	// 커스텀 오버레이를 생성합니다
+														var content = '<div class="customoverlay" >' + 
+									                    '<div class="title">' + addrs[i].fcId+ '</div>' +
+									                    '</div>';
+														
+														var customOverlay = new kakao.maps.CustomOverlay({
+														    position: coords,
+														    content: content,
+														    yAnchor: 3
+														});
+														
+													    (function(marker, customOverlay) {
+													        // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
+													        kakao.maps.event.addListener(marker, 'mouseover', function(mouseEvent) {
+													        	customOverlay.setMap(map);
+													        });
+													        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
+													        kakao.maps.event.addListener(marker, 'mouseout', function(mouseEvent) {
+													        	customOverlay.setMap(null);
+													        });
+													    })(marker, customOverlay);
 												    
 												    
 // ========================================== 카드 시작 !! =========================================================			
@@ -338,20 +343,27 @@ align-self: center;
 				    image:cicon
 				});
 					
-				// 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
-				var iwContent = '<div style="padding:5px;">여기에 계신가요?</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-			    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다	
+					// 커스텀 오버레이를 생성합니다
+					var content = '<div class="customoverlay" >' + 
+                    '<div class="title">현위치</div>' +
+                    '</div>';
 					
-				// 인포윈도우를 생성합니다
-					infowindow = new kakao.maps.InfoWindow({
-				    content : iwContent,
-				    removable : iwRemoveable
-				});	
-				// 마커에 클릭이벤트를 등록합니다
-				kakao.maps.event.addListener(marker, 'click', function() {
-				      // 마커 위에 인포윈도우를 표시합니다
-				      infowindow.open(map, marker);  
-				});
+					var customOverlay = new kakao.maps.CustomOverlay({
+					    position: mapOption.center,
+					    content: content,
+					    yAnchor: 3
+					});
+					
+				    (function(marker, customOverlay) {
+				        // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
+				        kakao.maps.event.addListener(marker, 'mouseover', function(mouseEvent) {
+				        	customOverlay.setMap(map);
+				        });
+				        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
+				        kakao.maps.event.addListener(marker, 'mouseout', function(mouseEvent) {
+				        	customOverlay.setMap(null);
+				        });
+				    })(marker, customOverlay);
 				
 					
 				fcAllAddress();
@@ -429,7 +441,7 @@ align-self: center;
 // ========================================== 프랜차이즈 마킹 시작 !! =================================================
 						
 						for (var i = 0 ; i < newLatLonList.length;i++ ){ // for 4 start
-							
+							var coords = new kakao.maps.LatLng(newLatLonList[i].Lat, newLatLonList[i].Lon);
 								console.log("가장가까운 거리의 지점 : ",newLatLonList[i].fcId);
 							// 마커를 생성합니다
 						    	marker = new kakao.maps.Marker({
@@ -437,22 +449,28 @@ align-self: center;
 						        position: new kakao.maps.LatLng(newLatLonList[i].Lat, newLatLonList[i].Lon), // 마커의 위치
 						        image : icon
 						    });
-						    // 마커에 표시할 인포윈도우를 생성합니다 
-						    	infowindow = new kakao.maps.InfoWindow({
-						        content: newLatLonList[i].fcId // 인포윈도우에 표시할 내용
-						    });
-						    // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
-						    // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-						    (function(marker, infowindow) {
-						        // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
-						        kakao.maps.event.addListener(marker, 'mouseover', function() {
-						            infowindow.open(map, marker);
-						        });
-						        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
-						        kakao.maps.event.addListener(marker, 'mouseout', function() {
-						            infowindow.close();
-						        });
-						    })(marker, infowindow);
+						    	// 커스텀 오버레이를 생성합니다
+								var content = '<div class="customoverlay" >' + 
+			                    '<div class="title">' + newLatLonList[i].fcId+ '점</div>' +
+			                    '</div>';
+			                    
+								var customOverlay = new kakao.maps.CustomOverlay({
+								    position: coords,
+								    content: content,
+								    yAnchor: 3
+								});
+									markers.push(marker); //현위치
+								
+							    (function(marker, customOverlay) {
+							        // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
+							        kakao.maps.event.addListener(marker, 'mouseover', function(mouseEvent) {
+							        	customOverlay.setMap(map);
+							        });
+							        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
+							        kakao.maps.event.addListener(marker, 'mouseout', function(mouseEvent) {
+							        	customOverlay.setMap(null);
+							        });
+							    })(marker, customOverlay);
  // ========================================== 프랜차이즈 마킹 종료 !! =================================================				
  // ========================================== 현위치 카드 시작 !! =================================================			
 						    
@@ -737,7 +755,7 @@ function depth2_change(e){
 											
 													// 커스텀 오버레이를 생성합니다
 													var content = '<div class="customoverlay" >' + 
-								                    '<div class="title">' + addrs[i].fcId+ '</div>' +
+								                    '<div class="title">' + addrs[i].fcId+ '점</div>' +
 								                    '</div>';
 													
 													var customOverlay = new kakao.maps.CustomOverlay({
