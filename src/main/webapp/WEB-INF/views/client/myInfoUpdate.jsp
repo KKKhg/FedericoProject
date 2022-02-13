@@ -43,7 +43,7 @@
 	<%@include file="nav.jsp"%>
 	<!-- Section-->
 	<section class="container py-5"
-		style="height: auto; min-height: 100%; padding-bottom: 168px;">
+		style=" min-height:1100px; padding-bottom: 168px;">
 
 		<div class="container-fluid">
 			<div class="row mb-5">
@@ -167,6 +167,9 @@
 			</div>
 		</div>
 	</section>
+ <%@ include file="footer.jsp"%> 
+
+
 
 	<!-- 휴대폰인증 모달 -->
 	<div class="modal fade" id="phoneCheckModal_up" role="dialog">

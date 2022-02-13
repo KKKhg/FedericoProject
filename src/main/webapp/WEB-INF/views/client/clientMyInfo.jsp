@@ -61,7 +61,7 @@ tbody tr {
 	<%@include file="nav.jsp"%>
 	<!-- 본문 시작 -->
 	<section class="container py-5"
-		style="height: auto; min-height: 100%; padding-bottom: 168px;">
+		style="min-height: 1200px; padding-bottom: 168px;">
 
 		<div class="container-fluid">
 			<div class="row mb-5">
@@ -245,7 +245,7 @@ tbody tr {
 		</div>
 	</section>
 	<!-- footer include -->
-	<%--  <%@ include file="footer.jsp"%> --%>
+	  <%@ include file="footer.jsp"%> 
 
 	
 	<script

@@ -1107,8 +1107,18 @@ function incheck() {
 
 	if (cCheck == true && dubCheck==true && pCheck == true && prCheck == true) {
 		if (confirm('계정을 생성하시겠습니까?')==true) {
+			 cCheck = false; // => 사원번호
+			 lpCheck = false; // =>로그인비번
+			 pCheck = false; // ->비번
+			 prCheck = false; // ->비번확인
+			 dubCheck = false;
 			return true;
 		} else {
+			 cCheck = false; // => 사원번호
+			 lpCheck = false; // =>로그인비번
+			 pCheck = false; // ->비번
+			 prCheck = false; // ->비번확인
+			 dubCheck = false;
 			return false;
 		}
 	} else
@@ -1143,6 +1153,11 @@ function inputClear() {
 	$('#passwordRepeat').attr("disabled", true);
 	$('#loginPassword').removeClass('is-invalid');
 	$('#loginPassword').removeClass('is-valid');
+	cCheck = false; // => 사원번호
+	 lpCheck = false; // =>로그인비번
+	 pCheck = false; // ->비번
+	 prCheck = false; // ->비번확인
+	 dubCheck = false;
 }
 
 // ====================================================================
