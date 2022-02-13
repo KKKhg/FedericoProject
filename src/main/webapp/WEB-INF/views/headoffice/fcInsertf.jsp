@@ -194,7 +194,39 @@ a {
 
 
 
-	<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+
+<div class="modal fade" id="hoIdSearchModal" role="dialog">
+		<div class="modal-dialog"
+			style="width: 500px; ">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">직원명단</h5>
+					<button type="button" class="btn-close infoClose"
+						data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="card">
+						<div class="card-body">
+							<div id="resultArea"></div>
+						</div>
+						<div class="modal-footer">
+						<div class="container-fluid">
+							<div class="row">
+								<button type="button" class="btn btn-secondary infoClose"
+									data-bs-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+
+
+		<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+
 	<script>
 	function findAddr() {
 		var width = 500; //팝업의 너비

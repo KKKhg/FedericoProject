@@ -846,21 +846,20 @@ public class HeadOfficeController {
 	// 가맹점 insert (강광훈)
 	@RequestMapping(value = "/fcinsert")
 	public ModelAndView fcInsert(ModelAndView mv, FranchiseVO vo) {
+			
+			log.info("가맹점 기입 비밀번호 : "+vo.getFcPassword());
+			vo.setFcPassword(passwordEncoder.encode(vo.getFcPassword()));
 		
-		
-		log.info(vo.getFcPassword());
-		vo.setFcPassword(passwordEncoder.encode(vo.getFcPassword()));
-		if (fservice.fcInsert(vo) > 0) {
-			mv.addObject("message", "계정생성이 완료되었습니다.");
-			mv.addObject("success", "success");
-		} else {
-			mv.addObject("message", " 계정생성이 실패하였습니다.");
-			mv.addObject("success", "fail");
-		}
-
-		mv.setViewName("jsonView");
-		return mv;
-	}// join
+				if (fservice.fcInsert(vo) > 0) {
+					mv.addObject("message", "계정생성이 완료되었습니다.");
+					mv.addObject("success", "success");
+				} else {
+					mv.addObject("message", " 계정생성이 실패하였습니다.");
+					mv.addObject("success", "fail");
+				}
+			mv.setViewName("jsonView");
+			return mv;	
+	}// fcinsert
 
 	// ** 가맹점 detail
 	@RequestMapping(value = "/fcdetail")
@@ -1101,12 +1100,17 @@ public class HeadOfficeController {
 	public ModelAndView menuDetail(ModelAndView mv, MenuVO vo) {
 		
 		vo = menuService.selectMenuOne(vo);
+		log.info(vo.getMenuIndex());
+		log.info(vo);
+		
 		
 		if(vo != null) { 
 			mv.addObject("menuvo",vo);
 			mv.addObject("success","success");
 		
-		}else mv.addObject("success","Fail");
+		}else { mv.addObject("success","Fail");}
+		
+		
 		mv.setViewName("jsonView");
 			
 		return mv;

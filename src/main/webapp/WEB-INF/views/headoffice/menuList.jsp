@@ -14,7 +14,7 @@
 <script src="/federico/resources/myLib/headOffice_Script.js"></script>
 <style type="text/css">
 
-
+.menu-card { height: 240px; width: 550px; display: inline-block; margin: 20px; z-index: 500; position: relative;}
 
 @media (min-width: 992px) {
   #carouselExampleIndicators {
@@ -186,8 +186,8 @@ $(function() {
 											</c:choose>
 											<td>  
 											  <div class="d-grid gap-2 col-md-6">
-												<button type="button" class="btn btn-danger btn-sm" onclick="menuUpdateForm(${vo.menuIndex})">판매중지</button>
-												<button type="button" class="btn btn-danger btn-sm" onclick="alret('현재 작업중입니다.')">메뉴입니다.</button>
+<!-- 												<button type="button" class="btn btn-danger btn-sm" onclick="alret('판매중지 메뉴입니다.')">판매중지</button> -->
+<!-- 												<button type="button" class="btn btn-danger btn-sm" onclick="alret('판매중지 메뉴입니다.')">메뉴입니다.</button> -->
 												<button type="button" class="btn btn-outline-primary btn-sm " id="menulife-btn${vs.index}" style="display:block;" onclick="menuDie(${vs.index},${vo.menuIndex})">활성화</button>
 											  </div>
 										</td>
@@ -212,7 +212,7 @@ $(function() {
 											<td>  
 											  <div class="d-grid gap-2 col-md-6">
 												<button type="button" class="btn btn-primary btn-sm" onclick="menuUpdateForm(${vo.menuIndex})">수정</button>
-												<button type="button" class="btn btn-outline-secondary btn-sm" onclick="preView(${vo.menuIndex})">미리보기</button>
+<%-- 												<button type="button" class="btn btn-outline-secondary btn-sm" onclick="preView(${vo.menuIndex})">미리보기</button> --%>
 												<!-- 
 												<button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#menuPreviewModal" onclick="menuPreview(${vo.menuIndex})">
 												미리보기</button>
@@ -362,45 +362,48 @@ $(function() {
 	<!-- 				메뉴명		 -->
 						<div class="input-group mb-3">
 						  <span class="input-group-text" id="basic-addon1">메뉴명</span>
-						  <input type="text" class="form-control "  id="upmenuName" name="menuName" value="${data.menuvo.menuName}">
+						  <input type="text" class="form-control "  id="upmenuName" name="menuName">
 						</div>
 	<!-- 				메뉴소개		 -->
 						<div class="input-group mb-3">
 						  <span class="input-group-text" id="basic-addon1">메뉴<br>소개</span>
-						  <textarea title="메뉴소개" class="form-control "  id="upmenuIntro" name="menuIntro" value="${data.menuvo.menuIntro}"></textarea>
+						  <textarea title="메뉴소개" class="form-control "  id="upmenuIntro" name="menuIntro"></textarea>
 						</div>
 	<!-- 				가격 -->
 						<div class="input-group mb-3">
 						  <span class="input-group-text" id="basic-addon1">가격</span>
-						  <input type="text" class="form-control "  id="upmenuPrice" name="menuPrice" value="${data.menuvo.menuPrice}">
+						  <input type="text" class="form-control "  id="upmenuPrice" name="menuPrice">
 						</div>		
 	<!--     			이미지수정 -->
 					 	<div class="container">
 							<div class="row" >
 								<div class="col">
 					    			<h5 class="card-title" align="center">기존이미지</h5>
+					    			<input type="hidden" id="menuImage" name="menuImage">
 					    			<img class="card-img" id="upbeforemenuImage" width="120" height="200" >
 					   				</div>
 					   			
 					    		<div class="col">	 	 	
 					    			<h5 class="card-title" align="center">수정이미지</h5>
 					    			<div class="input-group mb-3" >
-					    			<input type="hidden" id="menuImage" name="menuImage">
+					    			<img class="card-img select_img">
 									<input type="file" class="form-control" id="menuUploadfilef" name="menuUploadfilef">
 									  <span id="m_menuinput"></span><br>
 									</div>
+									
 									<script type="text/javascript">
 									$('#menuUploadfilef').change(function(){
 										if(this.files && this.files[0]) {
 											var reader = new FileReader;
 									 			reader.onload = function(e) {
-								 				$(".card-title").attr("src", e.target.result)
-								 					.width(100).height(100); 
+								 				$(".select_img").attr("src", e.target.result)
+								 					.width(200).height(200); 
 								 				} // onload_function
 								 				reader.readAsDataURL(this.files[0]);
 								 		} // if
 									}); // change	
 									</script>
+									
 								</div>
 							</div>
 						</div>			
@@ -417,16 +420,6 @@ $(function() {
 </form>
 <!-- 메뉴수정 modal END-->
 
-<!-- 메뉴 미리보기 modal START-->
-<div class="container">
-	<!-- 메뉴조회 카드 시작 -->
-	<div class="modal-dialog modal-lg" id="menuPreView">
-		<div class = "menu-card">
-		
-		</div>
-	</div>
-</div>
-<!-- 메뉴 미리보기 modal END-->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="/federico/resources/js/scripts.js"></script>
