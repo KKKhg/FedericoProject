@@ -362,31 +362,31 @@ $(function() {
 	<!-- 				메뉴명		 -->
 						<div class="input-group mb-3">
 						  <span class="input-group-text" id="basic-addon1">메뉴명</span>
-						  <input type="text" class="form-control "  id="upmenuName" name="menuName" value="${data.menuvo.menuName}">
+						  <input type="text" class="form-control "  id="upmenuName" name="menuName">
 						</div>
 	<!-- 				메뉴소개		 -->
 						<div class="input-group mb-3">
 						  <span class="input-group-text" id="basic-addon1">메뉴<br>소개</span>
-						  <textarea title="메뉴소개" class="form-control "  id="upmenuIntro" name="menuIntro" value="${data.menuvo.menuIntro}"></textarea>
+						  <textarea title="메뉴소개" class="form-control "  id="upmenuIntro" name="menuIntro"></textarea>
 						</div>
 	<!-- 				가격 -->
 						<div class="input-group mb-3">
 						  <span class="input-group-text" id="basic-addon1">가격</span>
-						  <input type="text" class="form-control "  id="upmenuPrice" name="menuPrice" value="${data.menuvo.menuPrice}">
+						  <input type="text" class="form-control "  id="upmenuPrice" name="menuPrice">
 						</div>		
 	<!--     			이미지수정 -->
 					 	<div class="container">
 							<div class="row" >
 								<div class="col">
 					    			<h5 class="card-title" align="center">기존이미지</h5>
-					    			<img class="card-img" src="${data.menuvo.menuImage}"id="upbeforemenuImage" width="120" height="200" >
+					    			<input type="hidden" id="menuImage" name="menuImage">
+					    			<img class="card-img" id="upbeforemenuImage" width="120" height="200" >
 					   				</div>
 					   			
 					    		<div class="col">	 	 	
 					    			<h5 class="card-title" align="center">수정이미지</h5>
 					    			<div class="input-group mb-3" >
 					    			<img class="card-img select_img">
-					    			<input type="hidden" id="menuImage" name="menuImage" value="${data.menuvo.menuImage}">
 									<input type="file" class="form-control" id="menuUploadfilef" name="menuUploadfilef">
 									  <span id="m_menuinput"></span><br>
 									</div>
