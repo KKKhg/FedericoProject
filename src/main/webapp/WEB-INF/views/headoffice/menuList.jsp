@@ -420,32 +420,6 @@ $(function() {
 </form>
 <!-- 메뉴수정 modal END-->
 
-<!-- 메뉴 미리보기 modal START-->
-	<div class="modal-body"id="menuPreView">
-		<div class="container-fluid">
-		    <div class="row">
-				<div class="card menu-card" >
-					<div class="row no-gutters">
-						<!-- 이미지 들어가는 부분 -->
-							<div class="col-5">
-								<img class="card-img" id="premenuImage" width="120" height="240px" />
-							</div>
-						<!-- 이미지 들어가는 부분 -->
-						<!-- 내용 들어가는 부분 -->
-							<div class="col-7">
-							<div class="card-body py-3 px-4">
-							<div class="fw-bold fs-4" style="text-align: left;" id="premenuName" >${data.menuvo.menuName }</div>
-							<p class="card-text menuIntro mt-1" style="color:gray; height: 100px;" id ="premenuIntro">${data.menuvo.menuIntro}</p>
-							<span class="mt-4 fw-bold fs-4"><fmt:formatNumber value="${data.menuvo.menuPrice}"/></span>
-							</div>
-							</div>
-						<!-- 내용 들어가는 부분 -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- 메뉴 미리보기 modal END-->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="/federico/resources/js/scripts.js"></script>
