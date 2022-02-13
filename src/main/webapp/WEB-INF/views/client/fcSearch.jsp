@@ -24,11 +24,8 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=63fe094a0bad5ef07be77c4f00959da2&libraries=services,clusterer,drawing"></script>
 
 <style>
-.label {margin-bottom: 96px;}
-.label * {display: inline-block;vertical-align: top;}
-.label .left {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_l.png") no-repeat;display: inline-block;height: 24px;overflow: hidden;vertical-align: top;width: 7px;}
-.label .center {background: url(https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_bg.png) repeat-x;display: inline-block;height: 24px;font-size: 12px;line-height: 24px;}
-.label .right {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_r.png") -1px 0  no-repeat;display: inline-block;height: 24px;overflow: hidden;width: 6px;}
+.customoverlay .title {display:block;text-align:center;background:#fff;margin-right:0px;padding:5px 5px;font-size:14px;font-weight:bold;border-radius:6px;}
+.customoverlay:after {content:'';position:absolute;margin-left:-12px;left:50%;bottom:-12px;width:22px;height:12px;background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
 
 .info-title {
 	    
@@ -738,39 +735,27 @@ function depth2_change(e){
 											    }); 
 													markers.push(marker); //지역명
 											
-// 													var content = '<div class="info" style="text-align:center;padding:0px;font-size:15px; font:bold;">' + 
-// 								                    '<div class="title" style="text-align:center;">' + addrs[i].fcId+ '</div>' +
-// 								                    '</div>';
-
-// 													// 커스텀 오버레이가 표시될 위치입니다 
-// 													var position = new kakao.maps.LatLng(33.450701, 126.570667);  
-
-// 													// 커스텀 오버레이를 생성합니다
-// 													var customOverlay = new kakao.maps.CustomOverlay({
-// 													    position: position,
-// 													    content: content   
-// 													});
+													// 커스텀 오버레이를 생성합니다
+													var content = '<div class="customoverlay" >' + 
+								                    '<div class="title">' + addrs[i].fcId+ '</div>' +
+								                    '</div>';
 													
-													 // 마커에 표시할 인포윈도우를 생성합니다 
-													infowindow = new kakao.maps.InfoWindow({
-												        content: '<div class="info" style="text-align:center;padding:0px;font-size:15px; font:bold;">' + 
-									                    '<div class="title" style="text-align:center;">' + addrs[i].fcId+ '</div>' +
-									                    '</div>', // 인포윈도우에 표시할 내용
-									                    disableAutoPan: true
-												    });
-											    	
-												    // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
-												    // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-												    (function(marker, infowindow) {
+													var customOverlay = new kakao.maps.CustomOverlay({
+													    position: coords,
+													    content: content,
+													    yAnchor: 3
+													});
+													
+												    (function(marker, customOverlay) {
 												        // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
 												        kakao.maps.event.addListener(marker, 'mouseover', function(mouseEvent) {
-												        	infowindow.open(map,marker);
+												        	customOverlay.setMap(map);
 												        });
 												        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
 												        kakao.maps.event.addListener(marker, 'mouseout', function(mouseEvent) {
-												        	infowindow.close();
+												        	customOverlay.setMap(null);
 												        });
-												    })(marker, infowindow);
+												    })(marker, customOverlay);
 // ========================================== 프랜차이즈 마킹 종료 !! =================================================				
 											} //for
 													
