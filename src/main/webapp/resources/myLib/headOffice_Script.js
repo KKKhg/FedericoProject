@@ -1452,7 +1452,9 @@ function fcOrderFlagUpdate(flag) {
 				$('#upmenuName').val(data.menuvo.menuName);
 				$('#upmenuIntro').val(data.menuvo.menuIntro);
 				$('#upmenuPrice').val(data.menuvo.menuPrice);
+				$('#upmenuIndex').val(menuIndex);
 				$('#upbeforemenuImage').attr("src",data.menuvo.menuImage);	
+				$('#menuImage').val(data.menuvo.menuImage);	
 						
 				$('#menuUpdatef').modal('show');
 				console.log("menuDetail?menuIndex="+menuIndex+"수신 성공");			
