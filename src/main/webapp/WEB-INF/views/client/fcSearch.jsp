@@ -286,7 +286,7 @@ align-self: center;
 														'<div class="col-6" style="margin-bottom: 40px;">'+
 														'<div class="card" style="border : 1px solid #DC3545; ">'+
 														  '<div class="card-body ">'+
-															   ' <h5 class="card-title" id="fcId">주소명 :'+ addrs[i].fcId+' 점 </h5>'+
+															   ' <h5 class="card-title" id="fcId">주소명 :'+ addrs[i].fcId+'점 </h5>'+
 														        '<h5 class="card-title"id="fcPhone">T :'+addrs[i].fcPhone+'</h5>'+
 															    '<p class="card-text"id="fcAddress">주소:'+ addrs[i].fcAddress+'</p>'+
 // 															   ' <button class="btn btn-danger" style="right: auto;"  onclick="fcDetail()">매장정보보기</button>'+
@@ -478,7 +478,7 @@ align-self: center;
 									'<div class="col-6" style="margin-bottom: 40px;">'+
 									'<div class="card" style="border : 1px solid #DC3545; ">'+
 									  '<div class="card-body ">'+
-										   ' <h5 class="card-title" id="fcId">주소명 :'+ newLatLonList[i].fcId+' 점 </h5>'+
+										   ' <h5 class="card-title" id="fcId">주소명 :'+ newLatLonList[i].fcId+'점 </h5>'+
 									        '<h5 class="card-title"id="fcPhone">T :'+newLatLonList[i].fcPhone+'</h5>'+
 										    '<p class="card-text"id="fcAddress">주소:'+ newLatLonList[i].fcAddress+'</p>'+
 // 										   ' <button class="btn btn-danger" style="right: auto;"  onclick="fcDetail()">매장정보보기</button>'+
@@ -811,7 +811,7 @@ function depth2_change(e){
 							<div class="card"
 							style="border : 1px solid #DC3545; ">
 							  <div class="card-body ">
-								    <h5 class="card-title" id="fcId">매장명 : ${vo.fcId} 점</h5>
+								    <h5 class="card-title" id="fcId">매장명 : ${vo.fcId}점</h5>
 							        <h5 class="card-title"id="fcPhone">T :${vo.fcPhone}</h5>
 								    <p class="card-text"id="fcAddress">주소: ${vo.fcAddress}</p>
 <!-- 								    <button class='btn btn-danger' style="right: auto;"  onclick="alert('♡사랑합니다. 고객님♡ \n해당 페이지는 현재 준비중입니다.')">매장정보보기</button> -->
