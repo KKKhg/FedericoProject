@@ -24,8 +24,14 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=63fe094a0bad5ef07be77c4f00959da2&libraries=services,clusterer,drawing"></script>
 
 <style>
+.label {margin-bottom: 96px;}
+.label * {display: inline-block;vertical-align: top;}
+.label .left {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_l.png") no-repeat;display: inline-block;height: 24px;overflow: hidden;vertical-align: top;width: 7px;}
+.label .center {background: url(https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_bg.png) repeat-x;display: inline-block;height: 24px;font-size: 12px;line-height: 24px;}
+.label .right {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_r.png") -1px 0  no-repeat;display: inline-block;height: 24px;overflow: hidden;width: 6px;}
 
 .info-title {
+	    
     display: block;
     background: #50627F;
     color: #fff;
@@ -36,11 +42,13 @@
     padding:0px 10px;
 }
 
+
+
+
 .position {
 height: 100px; 
 padding-bottom:100px;
 }
-
 .pos_span{
 position :relative;
 border: 0.5px solid;
@@ -50,33 +58,26 @@ width: 100%;
 height: 80px;
 font-size: 30px;
 }
-
 #pos_btn {
 position: relative;
 left: 85%;
 top: -15px;    
 }
-
 #pos_h3 {
 position : relative;
 left: 3%;
 top: 33px;
 }
-
-
 /* #a1{ */
 /* background-image: url(/federico/resources/Image/search_black_48dp.svg); */
 /* background-position: 90%; */
 /* background-repeat: no-repeat; */
 /* } */
-
 input:placeholder{
 align-content: center;
 align-items: center;
 align-self: center;
 }
-
-
 @font-face {
   font-family: 'Material Icons';
   font-style: normal;
@@ -100,15 +101,12 @@ align-self: center;
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
-
   /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
   /* Support for Safari and Chrome. */
   text-rendering: optimizeLegibility;
-
   /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
-
   /* Support for IE. */
   font-feature-settings: 'liga';
 }
@@ -117,11 +115,9 @@ align-self: center;
 .material-icons.md-24 { font-size: 24px; }
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
-
 /* Rules for using icons as black on a light background. */
 .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
 .material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
-
 /* Rules for using icons as white on a dark background. */
 .material-icons.md-light { color: rgba(255, 255, 255, 1); }
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
@@ -131,13 +127,8 @@ align-self: center;
 .material-icons.md-48 { font-size: 48px; }
 .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
 .material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
-
 .material-icons.md-light { color: rgba(255, 255, 255, 1); }
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
-
-
-
-
 </style>
 
 </head>
@@ -199,8 +190,6 @@ align-self: center;
 		    '/federico/resources/Image/cicon.png',
 		    new kakao.maps.Size(35, 40)// size
 		);
-	
-	
 			function a1enter(){
 				// 입력 안했을 시.
 				if($('#a1').val().length < 1 ){
@@ -232,7 +221,6 @@ align-self: center;
 									setMarkers();
 									var list = data.list;
 									var addrs = [];
-
 										for(var i = 0 ; i<list.length;i++){
 											var fc = {};
 	
@@ -275,7 +263,6 @@ align-self: center;
 												    	infowindow = new kakao.maps.InfoWindow({
 											    		content: addrs[i].fcId // 인포윈도우에 표시할 내용
 												    });
-
 												    // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
 												    // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
 												    (function(marker, infowindow) {
@@ -283,7 +270,6 @@ align-self: center;
 												        kakao.maps.event.addListener(marker, 'mouseover', function() {
 												            infowindow.open(map, marker);
 												        });
-
 												        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
 												        kakao.maps.event.addListener(marker, 'mouseout', function() {
 												            infowindow.close();
@@ -308,7 +294,6 @@ align-self: center;
 											map.setBounds(bounds);
 										} // function markingMap
 // ========================================== 프랜차이즈 마킹 종료 !! =================================================
-
 									} else alert('검색하신 지역에 가맹점이 없습니다.');
 																		
 							},// success
@@ -350,7 +335,6 @@ align-self: center;
 					       center: new kakao.maps.LatLng(clat, clng), // 지도의 중심좌표
 					};
 					map = new kakao.maps.Map(mapContainer, mapOption); // 지도에 표시
-
 					marker = new kakao.maps.Marker({
 				    map: map,
 				    position: new kakao.maps.LatLng(clat, clng),
@@ -384,7 +368,6 @@ align-self: center;
 		} else {alert("위치를 찾지 못했습니다.");}	
 		
 	}//whereami()
-
 	//전체 매장 주소 가져오기.
 	function fcAllAddress(){
 		
@@ -396,9 +379,7 @@ align-self: center;
 			success : function(data) {
 				console.log("성공!! ",data.list);
 				if(data.list != null){
-					
-					
-					
+
 					var list = data.list;					
 					var fcIdList = [];
 					var LatLonList = [];					
@@ -426,7 +407,6 @@ align-self: center;
 							console.log("i",i);
 							console.log("lengh",LatLonList.length);
 							let distance = getDistance(clat, clng, LatLonList[i].Lat, LatLonList[i].Lon, "K");
-
 							if (distance > searchDistance ) {
 								LatLonList.splice(i,1);
 								i--;
@@ -458,13 +438,12 @@ align-self: center;
 						    	marker = new kakao.maps.Marker({
 						        map: map, // 마커를 표시할 지도
 						        position: new kakao.maps.LatLng(newLatLonList[i].Lat, newLatLonList[i].Lon), // 마커의 위치
-						    	image:icon
+						        image : icon
 						    });
 						    // 마커에 표시할 인포윈도우를 생성합니다 
 						    	infowindow = new kakao.maps.InfoWindow({
 						        content: newLatLonList[i].fcId // 인포윈도우에 표시할 내용
 						    });
-
 						    // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
 						    // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
 						    (function(marker, infowindow) {
@@ -472,7 +451,6 @@ align-self: center;
 						        kakao.maps.event.addListener(marker, 'mouseover', function() {
 						            infowindow.open(map, marker);
 						        });
-
 						        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
 						        kakao.maps.event.addListener(marker, 'mouseout', function() {
 						            infowindow.close();
@@ -605,10 +583,8 @@ align-self: center;
 		};
 		    // 지도를 생성합니다    
    		let map = new kakao.maps.Map(mapContainer, mapOption); 
-
 // Depth1 이 바뀌고 depth2에 defualt값으로 들어가는 것도 실행 돼야 하기 때문에
 // depth2에 대한 event도 함께 포함한다.
-
 function depth1_change(e){   	
    	// 서울   	
 	const SU = ['강남구','강동구','강북구','강서구','관악구','광진구','구로구',
@@ -653,7 +629,6 @@ function depth1_change(e){
 	//제주
 	const JJ =  [ "서귀포시", "제주시" ];
 	console.log("ID=Sido => "+$('#Sido').val());
-
 	var target = document.getElementById("Gugun");
 	
 	target.options.length = 0;
@@ -685,8 +660,6 @@ function depth1_change(e){
 	depth2_change($('#Gugun').val());
 	
 }// function
-
-
 //function depth2
 function depth2_change(e){
 	
@@ -724,7 +697,6 @@ function depth2_change(e){
 				for(var i = 0 ; i<list.length;i++){
 					
 					var fc = {};
-
 					fc.fcAddress=list[i].fcAddress;
 					fc.fcId=list[i].fcId;
 					fc.fcPhone=list[i].fcPhone;
@@ -748,46 +720,66 @@ function depth2_change(e){
 // ========================================== 프랜차이즈 마킹 시작 !! =================================================
 										
 										function markingMap() {
-										
+											
+											var contents = [];									
+	
 											for(var i=0; i<total; i++) {
-
 											var coords = new kakao.maps.LatLng(addrs[i].ylat, addrs[i].xlon);
 											console.log('i='+i+'yLat[i]='+addrs[i].ylat+' xLng[i]='+addrs[i].xlon+' fcId =',addrs[i].fcId);
 												// marking 좌표를 포함하도록 영역 정보를 확장한다.
 												bounds.extend(coords);
 												
+											
 												// 마커를 생성합니다
 											    	marker = new kakao.maps.Marker({
 											        map: map, // 마커를 표시할 지도
 											        position: coords,// 마커의 위치
-											        image:icon
+											        image : icon
 											    }); 
-													markers.push(marker);
-											    
-											    // 마커에 표시할 인포윈도우를 생성합니다 
-											    	infowindow = new kakao.maps.InfoWindow({
-											        content: addrs[i].fcId // 인포윈도우에 표시할 내용
-											    });
-										    	
-											    // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
-											    // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-											    (function(marker, infowindow) {
-											        // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
-											        kakao.maps.event.addListener(marker, 'mouseover', function() {
-											            infowindow.open(map, marker);
-											        });
+													markers.push(marker); //지역명
+											
+// 													var content = '<div class="info" style="text-align:center;padding:0px;font-size:15px; font:bold;">' + 
+// 								                    '<div class="title" style="text-align:center;">' + addrs[i].fcId+ '</div>' +
+// 								                    '</div>';
 
-											        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
-											        kakao.maps.event.addListener(marker, 'mouseout', function() {
-											            infowindow.close();
-											        });
-											    })(marker, infowindow);		
+// 													// 커스텀 오버레이가 표시될 위치입니다 
+// 													var position = new kakao.maps.LatLng(33.450701, 126.570667);  
 
+// 													// 커스텀 오버레이를 생성합니다
+// 													var customOverlay = new kakao.maps.CustomOverlay({
+// 													    position: position,
+// 													    content: content   
+// 													});
+													
+													 // 마커에 표시할 인포윈도우를 생성합니다 
+													infowindow = new kakao.maps.InfoWindow({
+												        content: '<div class="info" style="text-align:center;padding:0px;font-size:15px; font:bold;">' + 
+									                    '<div class="title" style="text-align:center;">' + addrs[i].fcId+ '</div>' +
+									                    '</div>', // 인포윈도우에 표시할 내용
+									                    disableAutoPan: true
+												    });
+											    	
+												    // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
+												    // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+												    (function(marker, infowindow) {
+												        // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
+												        kakao.maps.event.addListener(marker, 'mouseover', function(mouseEvent) {
+												        	infowindow.open(map,marker);
+												        });
+												        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
+												        kakao.maps.event.addListener(marker, 'mouseout', function(mouseEvent) {
+												        	infowindow.close();
+												        });
+												    })(marker, infowindow);
 // ========================================== 프랜차이즈 마킹 종료 !! =================================================				
 											} //for
-												map.setBounds(bounds);
+													
+											
+											    map.setBounds(bounds);	
 											} // function markingMap
-					
+										 // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
+									    // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+									   
 					
 // 				card 밑에 띄우기
 					
@@ -854,13 +846,11 @@ function showdiv(id) {
 	}
 		
 }// function showdiv(id)
-
 function clickEffect(id){
 	$('.checked').css({
 		"color" : 'gray',
 		"border-bottom" : "1px solid lightgray"
 	});
-
 	$('#'+id).css({
 		"color" : '#DC3545',
 		"border-bottom" : "2px solid #DC3545"
@@ -868,7 +858,6 @@ function clickEffect(id){
 	
 		
 }//function clickEffect(id)
-
 function InputDataClear(){
 	$('#Sido').val('none');
 	$('#Gugun').val("none");
@@ -878,13 +867,11 @@ function InputDataClear(){
     map = new kakao.maps.Map(mapContainer, mapOption); 
 }
 
-	function setMarkers() {
+function setMarkers() {
 	    for (var i = 0; i < markers.length; i++) {
 	        markers[i].setMap(null);
 	    }
-// 	    markers=[];
-	}
-
+}
 
 </script>		
 
@@ -897,4 +884,3 @@ function InputDataClear(){
 
 </body>
 </html>
-

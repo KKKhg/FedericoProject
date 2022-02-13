@@ -16,7 +16,7 @@
 </head>
 <body class="bg-primary">
 	<div id="layoutAuthentication">
-		<div id="layoutAuthentication_content"style="min-height: 800px;">
+		<div id="layoutAuthentication_content">
 			<main>
 				<div class="container">
 					<div class="row" style="height: 100px;"></div>

@@ -137,12 +137,12 @@ a {
 									</div>
 								</div>
 								<div class="form-group mb-2">
-									<label class="form-label">연락처</label> <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
+									<label class="form-label">연락처</label> <input type="text"
 										id="fcPhone" class="form-control">
 								</div>
 								<label class="form-label">담당직원</label>
 								<div class="input-group mb-2 ">
-									<input type="text" id="fchoId" readonly="readonly" onfocus="fcSearchStaff()" class="form-control">
+									<input type="text" id="hoId" class="form-control">
 								</div>
 							</div>
 
@@ -161,6 +161,7 @@ a {
 		<!-- 본문 끝 -->
 	</div>
 	<!-- layoutSidenav 끝 -->
+
 
 
 
@@ -195,6 +196,7 @@ a {
 
 
 	<script src="https://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
 	<script>
 	function findAddr() {
 		var width = 500; //팝업의 너비
