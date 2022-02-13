@@ -1513,49 +1513,6 @@ function fcOrderFlagUpdate(flag) {
 			})//ajax
 		}//confirm
 	}//.click		
-/*
-	function preView(menuIndex){
-		
-		$.ajax({
-				type:'get',
-				url:'menuDetail?menuIndex='+menuIndex,
-				data:{
-					menuIndex : menuIndex,
-				},
-				success:function(data) {
-					
-					if(data.success == 'success')
-					{
-						console.log("seccess"+data.menuvo.menuIndex);
-						
-					$('#premenuName').html(data.menuvo.menuName);
-					$('#premenuIntro').html(data.menuvo.menuIntro);
-					$('#premenuPrice').val(data.menuvo.menuPrice);
-					$('#premenuImage').attr("src",data.menuvo.menuImage);		
-						
-					console.log("preView : 수신 성공");	 									
-					$('#menuPreView').modal('show');
-					
-				}else{
-					alert("수신에 실패하였습니다.");
-					console.log("수신 실패");
-				}
-									
-				},error:function(){
-					console.log("통신 실패");
-					alert("통신에 실패하였습니다.");
-				}
-			})//ajax
-		}// preView
-
-*/
-
-
-
-
-
-
-
 
 // ==========================< 이벤트 게시판 글 등록/수정/삭제 >=================================
 $(function(){
