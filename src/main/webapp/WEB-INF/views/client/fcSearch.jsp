@@ -258,7 +258,7 @@ align-self: center;
 													
 												    	// 커스텀 오버레이를 생성합니다
 														var content = '<div class="customoverlay" >' + 
-									                    '<div class="title">' + addrs[i].fcId+ '</div>' +
+									                    '<div class="title">' + addrs[i].fcId+ '점 </div>' +
 									                    '</div>';
 														
 														var customOverlay = new kakao.maps.CustomOverlay({
