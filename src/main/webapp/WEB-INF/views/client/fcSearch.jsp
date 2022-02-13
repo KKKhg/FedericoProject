@@ -24,7 +24,14 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=63fe094a0bad5ef07be77c4f00959da2&libraries=services,clusterer,drawing"></script>
 
 <style>
+.label {margin-bottom: 96px;}
+.label * {display: inline-block;vertical-align: top;}
+.label .left {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_l.png") no-repeat;display: inline-block;height: 24px;overflow: hidden;vertical-align: top;width: 7px;}
+.label .center {background: url(https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_bg.png) repeat-x;display: inline-block;height: 24px;font-size: 12px;line-height: 24px;}
+.label .right {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_r.png") -1px 0  no-repeat;display: inline-block;height: 24px;overflow: hidden;width: 6px;}
+
 .info-title {
+	    
     display: block;
     background: #50627F;
     color: #fff;
@@ -34,6 +41,10 @@
     border-radius:4px;
     padding:0px 10px;
 }
+
+
+
+
 .position {
 height: 100px; 
 padding-bottom:100px;
@@ -170,13 +181,15 @@ align-self: center;
 	
 	let markers= [];
 	
+	let icon = new kakao.maps.MarkerImage(
+		    '/federico/resources/Image/marker.png',
+		    new kakao.maps.Size(50, 50)// size
+		);
 	
 	let cicon = new kakao.maps.MarkerImage(
 		    '/federico/resources/Image/cicon.png',
 		    new kakao.maps.Size(35, 40)// size
 		);
-	
-	
 			function a1enter(){
 				// 입력 안했을 시.
 				if($('#a1').val().length < 1 ){
@@ -243,6 +256,7 @@ align-self: center;
 												    	marker = new kakao.maps.Marker({
 												        map: map, // 마커를 표시할 지도
 												        position: coords,// 마커의 위치
+												        image : icon
 												    });
 													
 												    // 마커에 표시할 인포윈도우를 생성합니다 
@@ -365,9 +379,7 @@ align-self: center;
 			success : function(data) {
 				console.log("성공!! ",data.list);
 				if(data.list != null){
-					
-					
-					
+
 					var list = data.list;					
 					var fcIdList = [];
 					var LatLonList = [];					
@@ -426,6 +438,7 @@ align-self: center;
 						    	marker = new kakao.maps.Marker({
 						        map: map, // 마커를 표시할 지도
 						        position: new kakao.maps.LatLng(newLatLonList[i].Lat, newLatLonList[i].Lon), // 마커의 위치
+						        image : icon
 						    });
 						    // 마커에 표시할 인포윈도우를 생성합니다 
 						    	infowindow = new kakao.maps.InfoWindow({
@@ -707,42 +720,66 @@ function depth2_change(e){
 // ========================================== 프랜차이즈 마킹 시작 !! =================================================
 										
 										function markingMap() {
-										
+											
+											var contents = [];									
+	
 											for(var i=0; i<total; i++) {
 											var coords = new kakao.maps.LatLng(addrs[i].ylat, addrs[i].xlon);
 											console.log('i='+i+'yLat[i]='+addrs[i].ylat+' xLng[i]='+addrs[i].xlon+' fcId =',addrs[i].fcId);
 												// marking 좌표를 포함하도록 영역 정보를 확장한다.
 												bounds.extend(coords);
 												
+											
 												// 마커를 생성합니다
 											    	marker = new kakao.maps.Marker({
 											        map: map, // 마커를 표시할 지도
 											        position: coords,// 마커의 위치
+											        image : icon
 											    }); 
-													markers.push(marker);
-											    
-											    // 마커에 표시할 인포윈도우를 생성합니다 
-											    	infowindow = new kakao.maps.InfoWindow({
-											        content: addrs[i].fcId // 인포윈도우에 표시할 내용
-											    });
-										    	
-											    // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
-											    // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-											    (function(marker, infowindow) {
-											        // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
-											        kakao.maps.event.addListener(marker, 'mouseover', function() {
-											            infowindow.open(map, marker);
-											        });
-											        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
-											        kakao.maps.event.addListener(marker, 'mouseout', function() {
-											            infowindow.close();
-											        });
-											    })(marker, infowindow);		
+													markers.push(marker); //지역명
+											
+// 													var content = '<div class="info" style="text-align:center;padding:0px;font-size:15px; font:bold;">' + 
+// 								                    '<div class="title" style="text-align:center;">' + addrs[i].fcId+ '</div>' +
+// 								                    '</div>';
+
+// 													// 커스텀 오버레이가 표시될 위치입니다 
+// 													var position = new kakao.maps.LatLng(33.450701, 126.570667);  
+
+// 													// 커스텀 오버레이를 생성합니다
+// 													var customOverlay = new kakao.maps.CustomOverlay({
+// 													    position: position,
+// 													    content: content   
+// 													});
+													
+													 // 마커에 표시할 인포윈도우를 생성합니다 
+													infowindow = new kakao.maps.InfoWindow({
+												        content: '<div class="info" style="text-align:center;padding:0px;font-size:15px; font:bold;">' + 
+									                    '<div class="title" style="text-align:center;">' + addrs[i].fcId+ '</div>' +
+									                    '</div>', // 인포윈도우에 표시할 내용
+									                    disableAutoPan: true
+												    });
+											    	
+												    // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
+												    // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+												    (function(marker, infowindow) {
+												        // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
+												        kakao.maps.event.addListener(marker, 'mouseover', function(mouseEvent) {
+												        	infowindow.open(map,marker);
+												        });
+												        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
+												        kakao.maps.event.addListener(marker, 'mouseout', function(mouseEvent) {
+												        	infowindow.close();
+												        });
+												    })(marker, infowindow);
 // ========================================== 프랜차이즈 마킹 종료 !! =================================================				
 											} //for
-												map.setBounds(bounds);
+													
+											
+											    map.setBounds(bounds);	
 											} // function markingMap
-					
+										 // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
+									    // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+									   
 					
 // 				card 밑에 띄우기
 					
@@ -829,12 +866,13 @@ function InputDataClear(){
 	$('#fcInfo_all').empty();
     map = new kakao.maps.Map(mapContainer, mapOption); 
 }
-	function setMarkers() {
+
+function setMarkers() {
 	    for (var i = 0; i < markers.length; i++) {
 	        markers[i].setMap(null);
 	    }
-// 	    markers=[];
-	}
+}
+
 </script>		
 
 	<!-- Footer-->
