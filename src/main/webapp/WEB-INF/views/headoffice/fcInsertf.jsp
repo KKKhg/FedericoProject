@@ -194,7 +194,6 @@ a {
 
 
 
-	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 <div class="modal fade" id="hoIdSearchModal" role="dialog">
 		<div class="modal-dialog"
@@ -226,7 +225,7 @@ a {
 
 
 
-	<script src="https://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+		<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 
 	<script>
 	function findAddr() {
