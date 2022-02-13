@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -155,7 +155,7 @@ function move(){
 							<c:forEach var="vo" items="${fcClientList}" varStatus="vs">
 								<tr>
 									<th>${vs.index + 1}</th>
-									<td>${vo.clientPhone}</td>
+									<td>${fn:substring(vo.clientPhone,0,3)}-${fn:substring(vo.clientPhone,3,7)}-${fn:substring(vo.clientPhone,7,11)}</td>
 									<td>${vo.memo}</td>
 									<c:if test="${vo.gbFlag == 'G' }">
 										<td style="color: green;">
