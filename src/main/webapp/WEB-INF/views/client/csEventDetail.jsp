@@ -14,7 +14,7 @@
 <link href="/federico/resources/css/styles.css" rel="stylesheet" />
 <link rel="icon" type="image/x-icon"
 	href="/federico/resources/Image/LOGO.png" />
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
 	crossorigin="anonymous"></script>
@@ -96,8 +96,9 @@
 								<div class="row mt-4 px-3">
 									<div class="col-6" align="left">
 									<button class="btn btn-outline-danger" style="width: 100px;"
-									onclick="javascript:location.href='csEventf'">목록</button>
+									onclick="javascript:location.href='csEventf?flag=doing'">목록</button>
 									</div>
+									
 									<div class="col-6" align="right">
 									<button class="btn btn-outline-danger" style="width: 100px;"
 									onclick="javascript:location.href='csEventDetail?eventSeq=${eventDetail.eventSeq-1}'">

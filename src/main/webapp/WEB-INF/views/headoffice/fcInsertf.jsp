@@ -12,7 +12,7 @@
 <meta name="author" content="" />
 <title>Federico Company</title>
 <link href="/federico/resources/css/styles.css" rel="stylesheet" />
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
 	crossorigin="anonymous"></script>
@@ -195,6 +195,39 @@ a {
 
 
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
+<div class="modal fade" id="hoIdSearchModal" role="dialog">
+		<div class="modal-dialog"
+			style="width: 500px; ">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">직원명단</h5>
+					<button type="button" class="btn-close infoClose"
+						data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="card">
+						<div class="card-body">
+							<div id="resultArea"></div>
+						</div>
+						<div class="modal-footer">
+						<div class="container-fluid">
+							<div class="row">
+								<button type="button" class="btn btn-secondary infoClose"
+									data-bs-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+
+
+	<script src="https://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
 	<script>
 	function findAddr() {
 		var width = 500; //팝업의 너비
