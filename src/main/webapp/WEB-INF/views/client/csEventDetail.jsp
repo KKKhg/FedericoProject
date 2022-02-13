@@ -96,8 +96,9 @@
 								<div class="row mt-4 px-3">
 									<div class="col-6" align="left">
 									<button class="btn btn-outline-danger" style="width: 100px;"
-									onclick="javascript:location.href='csEventf'">목록</button>
+									onclick="javascript:location.href='csEventf?flag=doing'">목록</button>
 									</div>
+									
 									<div class="col-6" align="right">
 									<button class="btn btn-outline-danger" style="width: 100px;"
 									onclick="javascript:location.href='csEventDetail?eventSeq=${eventDetail.eventSeq-1}'">
