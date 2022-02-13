@@ -12,7 +12,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>페데리꼬 피자</title>
-<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script  src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <link rel="icon" type="image/x-icon"
 	href="/federico/resources/Image/LOGO.png" />
