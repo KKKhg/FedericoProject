@@ -12,7 +12,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>페데리꼬 피자</title>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
 	crossorigin="anonymous"></script>
@@ -275,7 +275,7 @@
 
 
 
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="https://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script>
 		function findAddr() {
 			var width = 500; //팝업의 너비
