@@ -179,8 +179,8 @@ align-self: center;
 	let markers= [];
 	
 	let icon = new kakao.maps.MarkerImage(
-		    '/federico/resources/Image/marker.png',
-		    new kakao.maps.Size(50, 50)// size
+		    '/federico/resources/Image/noname.png',
+		    new kakao.maps.Size(70, 70)// size
 		);
 	
 	let cicon = new kakao.maps.MarkerImage(
