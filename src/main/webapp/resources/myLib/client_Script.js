@@ -933,6 +933,7 @@ function findPwsendSms(){
         	  $('#inputCertifiedNumber').attr('readonly',false);
         	  numStr=resultData.numStr;
         	  id=resultData.clientId;
+        	  console.log(numStr);
         }},//success
         error: function(){
 			alert('서버오류입니다.')
